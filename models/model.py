@@ -1,4 +1,4 @@
-from .auth import Auth
+from models.auth import Auth
 
 
 class Model:

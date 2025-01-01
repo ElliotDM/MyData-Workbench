@@ -1,4 +1,4 @@
-from .observer import Observer
+from models.observer import Observer
 import mysql.connector
 
 

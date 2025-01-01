@@ -1,9 +1,9 @@
-import tkinter
+from tkinter import Tk
 
 
-class Root(tkinter.Tk):
+class Root(Tk):
     def __init__(self):
         super().__init__()
         self.title("MyWorkbench")
         self.geometry('400x200')
-        self.resizable(0,0)
+        self.resizable(False,False)

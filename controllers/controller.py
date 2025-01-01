@@ -1,5 +1,5 @@
-from .home import HomeController
-from .login import LogInController
+from controllers.home import HomeController
+from controllers.login import LogInController
 
 
 class Controller:
@@ -15,17 +15,17 @@ class Controller:
 
     def auth_state_listener(self, data):
         if data:
-            self.view.swicth("home")
-            self.view.resize(self.view.width, self.view.height)
+            self.view.switch("home")
+            self.view.resize(800, 600)
         else:
-            self.view.swicth("login")
+            self.view.switch("login")
             self.view.resize(400, 200)
 
     def start(self):
         if self.model.auth.is_logged_in:
-            self.view.swicth("home")
+            self.view.switch("home")
         else:
-            self.view.swicth("login")
+            self.view.switch("login")
 
         self.view.star_mainloop()
 

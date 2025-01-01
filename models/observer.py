@@ -1,6 +1,6 @@
 class Observer:
     def __init__(self):
-        self.event_listeners: dict[list] = {}
+        self.event_listeners = {}
 
     def add_event_listener(self, event, fn):
         try:

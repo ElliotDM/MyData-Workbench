@@ -1,6 +1,6 @@
-from .root import Root
-from .login import LogIn
-from .home import Home
+from views.root import Root
+from views.login import LogIn
+from views.home import Home
 
 
 class View:
@@ -8,9 +8,6 @@ class View:
         self.root = Root()
         self.root.option_add("*tearOff", False)
         self.root.call('source', 'forest-light.tcl')
-
-        self.width = self.root.winfo_screenwidth()
-        self.height = self.root.winfo_screenheight()
 
         self.frames = {}
 
@@ -21,13 +18,13 @@ class View:
         self.frames[name] = Frame(self.root)
         self.frames[name].grid(row=0, column=0, sticky="nsew")
 
-    def swicth(self, name):
+    def switch(self, name):
         frame = self.frames[name]
         frame.tkraise()
-        self.root.update()
 
-    def resize(self, width, hegiht):
-        self.root.geometry(f'{width}x{hegiht}')
+    def resize(self, width, height):
+        self.root.geometry(f'{width}x{height}')
+        self.root.update()
 
     def star_mainloop(self):
         self.root.mainloop()
