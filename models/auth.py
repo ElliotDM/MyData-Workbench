@@ -1,3 +1,4 @@
+from mysql.connector.errors import get_mysql_exception
 from models.observer import Observer
 import mysql.connector
 
@@ -11,13 +12,16 @@ class Auth(Observer):
     def login(self, host, user, password):
         self.is_logged_in = True
 
-        self.connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-        )
+        try:
+            self.connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+            )
 
-        self.trigger_event("auth_changed")
+            self.trigger_event("auth_changed")
+        except mysql.connector.Error as error:
+            return error
 
     def logout(self):
         self.is_logged_in = False

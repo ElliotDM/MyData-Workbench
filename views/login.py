@@ -1,4 +1,5 @@
 from tkinter.ttk import Style, Entry, Label, Button, Frame
+from tkinter import messagebox
 
 
 class LogIn(Frame):
@@ -35,3 +36,7 @@ class LogIn(Frame):
         self.login_btn = Button(self, text="Sign In",
                                 style="ToggleButton")
         self.login_btn.grid(row=4, column=1, padx=0, pady=10, sticky="w")
+
+    @staticmethod
+    def error_message(error):
+        messagebox.showerror("Error", f"Connection error: {error}")

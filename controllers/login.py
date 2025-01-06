@@ -13,4 +13,6 @@ class LogInController:
         host = self.frame.host_entry.get()
         password = self.frame.password_entry.get()
         self.frame.password_entry.delete(0, last=len(password))
-        self.model.auth.login(host, user, password)
+
+        if error := self.model.auth.login(host, user, password):
+            self.frame.error_message(error)
